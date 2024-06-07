@@ -11,7 +11,7 @@ const socketModule = require("./modules/socket");
 const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
-const port = 9999 || process.env.PORT;
+const port =process.env.PORT || 9999;
 app.use("/images", express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +31,6 @@ socketModule(server);
 
 
 //-------------------------------------
-server.listen(port, () => {
+server.listen(port, "0.0.0.0" () => {
   console.log("Server listening on port: " + port);
 });
