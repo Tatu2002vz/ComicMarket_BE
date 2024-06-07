@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     credentials: true,
-    origin: ["http://127.0.0.1:5500", "http://localhost:3000"]
+    origin: ["http://127.0.0.1:5500", "http://localhost:3000", "https://comic-market-fe.vercel.app"]
   })
 );
 
