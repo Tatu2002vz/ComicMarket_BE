@@ -7,7 +7,7 @@ const commentRouter = require("./comment");
 const historyRouter = require("./history");
 const favoriteRouter = require("./favorite");
 const paymentRouter = require("./payment");
-const insertRouter = require("./insertData");
+// const insertRouter = require("./insertData");
 const { notFound, errHandler } = require("../middlewares/errHandler");
 const { verifyAccessTokenoken } = require("../middlewares/verifyToken");
 
@@ -30,7 +30,7 @@ const initRoutes = (app) => {
 
   app.use("/api/payment", paymentRouter);
 
-  app.use("/api/insert", insertRouter);
+  // app.use("/api/insert", insertRouter);
 
   app.use(notFound);
   app.use(errHandler);
