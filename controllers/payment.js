@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Payment = require("../models/payment");
 const user = require("../models/user");
-const sttCode = require('../enum/statusCode')
+const statusCode = require('../enum/statusCode')
 const createPaymentUrl = asyncHandler(async (req, res) => {
   var ipAddr =
     req.headers["x-forwarded-for"] ||
@@ -64,7 +64,7 @@ const createPaymentUrl = asyncHandler(async (req, res) => {
   vnp_Params["vnp_SecureHash"] = signed;
   vnpUrl += "?" + querystring.stringify(vnp_Params, { encode: false });
 
-  return res.status(sttCode.Ok).json({
+  return res.status(statusCode.Ok).json({
     success: true,
     mes: vnpUrl,
   });
