@@ -1,0 +1,17 @@
+const router = require('express').Router()
+const controller = require('../controllers/user')
+const {verifyAccessToken, isAdmin} = require('../middlewares/verifyToken')
+
+router.get('/', [verifyAccessToken, isAdmin] ,controller.getAllUsers)
+router.get('/current', verifyAccessToken, controller.getCurrent)
+router.get('/:id', controller.getUser)
+router.post('/register', controller.register)
+router.post('/login', controller.login)
+router.post('/refreshtoken', controller.refreshToken)
+router.post('/forgotpassword', controller.forgotPassword)
+router.put('/deposit', [verifyAccessToken] ,controller.depositAccount)
+router.put('/change-password', [verifyAccessToken], controller.changePassword)
+router.put('/reset-password/:token', controller.resetPassword)
+router.put('/:id_update', verifyAccessToken, controller.updateUser)
+router.delete('/delete/:id', [verifyAccessToken] ,controller.deleteUser)
+module.exports = router
