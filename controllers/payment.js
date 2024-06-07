@@ -12,7 +12,7 @@ const createPaymentUrl = asyncHandler(async (req, res) => {
   var tmnCode = process.env.vnp_TmnCode;
   var secretKey = process.env.vnp_HashSecret;
   var vnpUrl = process.env.vnp_VnpUrl;
-  var returnUrl = "http://localhost:3000/payment";
+  var returnUrl = process.env.vnp_ReturnUrl;
   var date = new Date();
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
