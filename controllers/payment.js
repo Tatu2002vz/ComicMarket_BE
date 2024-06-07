@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Payment = require("../models/payment");
 const user = require("../models/user");
+const sttCode = require('../enum/statusCode')
 const createPaymentUrl = asyncHandler(async (req, res) => {
   var ipAddr =
     req.headers["x-forwarded-for"] ||
@@ -151,7 +152,21 @@ const vnpayReturn = asyncHandler(async (req, res) => {
     // res.render("success", { code: "97" });
   }
 });
-
+function sortObject(obj) {
+  let sorted = {};
+  let str = [];
+  let key;
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      str.push(encodeURIComponent(key));
+    }
+  }
+  str.sort();
+  for (key = 0; key < str.length; key++) {
+    sorted[str[key]] = encodeURIComponent(obj[str[key]]).replace(/%20/g, "+");
+  }
+  return sorted;
+}
 module.exports = {
   createPaymentUrl,
   vnpayReturn,
